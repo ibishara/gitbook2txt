@@ -1,6 +1,14 @@
 import requests
 from bs4 import BeautifulSoup
 import os
+import sys
+
+# Check if the command line argument (GitBook URL) is provided
+if len(sys.argv) != 2:
+    print("Usage: python gitbook2txt.py [GitBook URL]")
+    sys.exit(1)
+
+gitbook_url = sys.argv[1]
 
 # Function to download a single page
 def download_page(url, folder):
@@ -54,6 +62,5 @@ def download_gitbook(main_url):
     except Exception as e:
         print(f"Error downloading GitBook: {e}")
 
-# Example usage
-gitbook_url = "https://docs.gitbook.com/"  # Replace with the actual GitBook URL
+# Run the script with the provided GitBook URL
 download_gitbook(gitbook_url)
